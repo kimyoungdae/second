@@ -1,53 +1,59 @@
 package com.mythree.myapp.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.gura.spring05.users.dto.UsersDto;
+import com.gura.spring05.cafe.dto.CafeDto;
 
 @Repository
-public class animalDaoImpl implements animalDao{
+public class CafeDaoImpl implements CafeDao{
 	@Autowired
 	private SqlSession session;
 
 	@Override
-	public boolean isExist(String inputId) {
-		//입력한 아이디가 존재하는지 id 를 select 해 본다.
-		String id=session.selectOne("animal.isExist", inputId);
+	public List<CafeDto> getList(CafeDto dto) {
 		
-		if(id==null) {//존재하지 않는 아이디
-			return false;
-		}else {//존재하는 아이디
-			return true;
-		}
+		return session.selectList("cafe.getList", dto);
 	}
 
 	@Override
-	public void insert(animalDto dto) {
-		session.insert("users.insert", dto);
-	}
-	
-	//인자로 전달되는 id 에 해당되는 사용자 정보를 리턴하는 메소드 
-	@Override
-	public animalDto getData(String id) {
-		animalDto dto=session.selectOne("animal.getData", id);
-		return dto;
+	public int getCount(CafeDto dto) {
+
+		return session.selectOne("cafe.getCount", dto);
 	}
 
 	@Override
-	public void delete(String id) {
-		session.delete("animal.delete", id);
+	public void insert(CafeDto dto) {
+		session.insert("cafe.insert", dto);
 	}
 
 	@Override
-	public void update(animalDto dto) {
-		session.update("animal.update", dto);
+	public CafeDto getData(int num) {
+		return session.selectOne("cafe.getData", num);
 	}
 
 	@Override
-	public void updatePwd(animalDto dto) {
-		session.update("animal.updatePwd", dto);
+	public void addViewCount(int num) {
+		session.update("cafe.addViewCount", num);
+	}
+
+	@Override
+	public void delete(int num) {
+		session.delete("cafe.delete", num);
+	}
+
+	@Override
+	public void update(CafeDto dto) {
+		session.update("cafe.update", dto);
+	}
+	//키워드가 들어있는 CafeDto 를 전달받아서 글 정보를 리턴하는 메소드 
+	@Override
+	public CafeDto getData(CafeDto dto) {
+		
+		return session.selectOne("cafe.getData2", dto);
 	}
 	
 }
