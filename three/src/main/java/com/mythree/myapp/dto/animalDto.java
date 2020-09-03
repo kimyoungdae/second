@@ -1,6 +1,6 @@
 package com.mythree.myapp.dto;
 
-public class CafeDto {
+public class animalDto {
 	private int num;
 	private String writer;
 	private String title;
@@ -12,8 +12,8 @@ public class CafeDto {
 	private int prevNum; //이전글의 글번호
 	private int nextNum; //다음글의 글번호
 	//디폴트 생성자 
-	public CafeDto() {}
-	public CafeDto(int num, String writer, String title, String content, int viewCount, String regdate, int startRowNum,
+	public animalDto() {}
+	public animalDto(int num, String writer, String title, String content, int viewCount, String regdate, int startRowNum,
 			int endRowNum, int prevNum, int nextNum) {
 		super();
 		this.num = num;
