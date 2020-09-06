@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/views/cafe/detail.jsp</title>
+<title>/views/animal/detail.jsp</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
 <style>
 	/* 글 내용을 출력할 div 에 적용할 css */
